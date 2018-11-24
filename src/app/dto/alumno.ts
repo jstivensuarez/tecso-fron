@@ -1,3 +1,5 @@
+import { Curso } from "./curso";
+
 export class Alumno {
 
     alumnoId: number;
@@ -6,7 +8,7 @@ export class Alumno {
     segundoApellido: string;
     legajo: string;
     fechaNacimiento: Date;
-
+    cursos: Curso[];
     constructor() { }
 }
   

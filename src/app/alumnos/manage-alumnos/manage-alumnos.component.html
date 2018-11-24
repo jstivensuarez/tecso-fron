@@ -1,65 +1,81 @@
-<mat-card>
-    <!-- Title of an Card -->
-    <mat-card-title>
-        {{example}}
-    </mat-card-title>
+<br>
+<br>
+<div class="container">
+    <mat-card>
 
-    <mat-card-content>
-        <form>
-            <table>
-                <tr>
-                    <td>
-                        <mat-form-field class="demo-full-width">
-                            <input matInput placeholder="Nombre" [(ngModel)]="alumno.nombre" [ngModelOptions]="{standalone: true}">
-                        </mat-form-field>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <mat-form-field class="demo-full-width">
-                            <input matInput placeholder="Primer apellido" [(ngModel)]="alumno.primerApellido"
-                                [ngModelOptions]="{standalone: true}">
-                        </mat-form-field>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <mat-form-field class="demo-full-width">
-                            <input matInput placeholder="Segundo apellido" [(ngModel)]="alumno.segundoApellido"
-                                [ngModelOptions]="{standalone: true}">
-                        </mat-form-field>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <mat-form-field class="demo-full-width">
-                            <input matInput [matDatepicker]="picker" placeholder="Fecha de nacimiento" [ngModel]="alumno.fechaNacimiento"
-                                [ngModelOptions]="{standalone: true}" (ngModelChange)="alumno.fechaNacimiento = $event">
-                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                            <mat-datepicker touchUi="true" #picker></mat-datepicker>
-                        </mat-form-field>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
+        <mat-card-title>
+            {{title}}
+        </mat-card-title>
 
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2" class="content-center">
-                        <mat-card-actions>
-                            <button mat-raised-button color="accent" (click)="alert()">Regresar</button>
-                            <button mat-raised-button color="accent" (click)="save()" *ngIf="!isEditing">Crear</button>
-                            <button mat-raised-button color="accent" (click)="edit()" *ngIf="isEditing">Editar</button>
+        <mat-card-content>
+            <form [formGroup]='form' (ngSubmit)='submit(form.value)' ngNativeValidate  #testForm="ngForm">
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6">
+                        <div class="example-container">
+                            <mat-form-field>
+                                <input matInput placeholder="Nombre" [(ngModel)]="student.nombre"
+                                [ngModelOptions]="{standalone: true}" required #nombre="ngModel">
+                                <mat-error *ngIf="nombre.invalid">
+                                    <div *ngIf="nombre.errors.required">
+                                        El nombre es requerido
+                                    </div>
+                                </mat-error>
+                            </mat-form-field>
+
+                            <mat-form-field class="demo-full-width">
+                                <input matInput placeholder="Primer apellido" [(ngModel)]="student.primerApellido"
+                                    [ngModelOptions]="{standalone: true}" required #primerApe="ngModel">
+                                <mat-error *ngIf="primerApe.invalid">
+                                    <div *ngIf="primerApe.errors.required">
+                                        El primer apellido es requerido
+                                    </div>
+                                </mat-error>
+                            </mat-form-field>
+
+                            <mat-form-field class="demo-full-width">
+                                <input matInput placeholder="Segundo apellido" [(ngModel)]="student.segundoApellido"
+                                    [ngModelOptions]="{standalone: true}">
+                            </mat-form-field>
+
+                            <mat-form-field class="demo-full-width">
+                                <input matInput [matDatepicker]="picker" placeholder="Fecha de nacimiento" [ngModel]="student.fechaNacimiento"
+                                    [ngModelOptions]="{standalone: true}" (ngModelChange)="student.fechaNacimiento = $event"
+                                    required #fecha="ngModel">
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker touchUi="true" #picker></mat-datepicker>
+                                <mat-error *ngIf="fecha.invalid">
+                                    <div *ngIf="fecha.errors.required">
+                                        La fecha de nacimiento es requerida
+                                    </div>
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <br>
+                        <div class="row" *ngIf="isEditing">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-6">
+                                <div class="scroll">
+                                    <div *ngFor='let curso of cursos.controls; let i=index'>
+                                        <mat-checkbox [formControl]='curso' [checked]="student.cursos[i].estaInscrita">
+                                            {{student.cursos[i].asignatura}}
+                                        </mat-checkbox>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3"></div>
+                        </div>
+                        <br>
+                        <mat-card-actions class="left">
+                            <button mat-raised-button color="basic" (click)="return()">Regresar</button>
+                            <button mat-raised-button color="primary" *ngIf="!isEditing" >Crear</button>
+                            <button mat-raised-button color="primary" *ngIf="isEditing">Actualizar</button>
                         </mat-card-actions>
-                    </td>
-                </tr>
-            </table>
-            <div>
-                <mat-checkbox [(ngModel)]="myModel" [ngModelOptions]="{standalone: true}">
-                    Check me!
-                </mat-checkbox>
-            </div>
-        </form>
-    </mat-card-content>
-</mat-card>
+                    </div>
+                    <div class="col-md-3"></div>
+                </div>
+
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>

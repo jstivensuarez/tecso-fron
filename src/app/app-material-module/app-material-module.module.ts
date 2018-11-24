@@ -14,8 +14,14 @@ import {
   MatRadioModule,      
   MatSelectModule,      
   MatOptionModule,      
-  MatSlideToggleModule,ErrorStateMatcher,ShowOnDirtyErrorStateMatcher, MatTableModule, MatCheckboxModule      
+  MatSlideToggleModule,
+  ErrorStateMatcher,
+  ShowOnDirtyErrorStateMatcher, 
+  MatTableModule,
+  MatCheckboxModule, 
+  MatDialogModule      
 } from '@angular/material'; 
+import { ScrollDispatchModule } from '@angular/cdk/scrolling';
 @NgModule({
   declarations: [],
   imports: [
@@ -35,7 +41,9 @@ import {
     MatSlideToggleModule, 
     MatListModule,
     MatTableModule, 
-    MatCheckboxModule
+    MatCheckboxModule, 
+    MatDialogModule,
+    ScrollDispatchModule
   ], 
   exports: [
     CommonModule, 
@@ -54,7 +62,9 @@ import {
     MatSlideToggleModule,
     MatListModule,
     MatTableModule,
-    MatCheckboxModule
+    MatCheckboxModule, 
+    MatDialogModule,
+    ScrollDispatchModule
   ]
 })
 export class AppMaterialModuleModule { }

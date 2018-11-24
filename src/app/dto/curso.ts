@@ -4,7 +4,7 @@ export class Curso {
     asignatura: string;
     cupoMaximo: number;
     docenteId: number;
-    EstaInscrita: boolean;
+    estaInscrita: boolean;
     
     constructor(){}
 }

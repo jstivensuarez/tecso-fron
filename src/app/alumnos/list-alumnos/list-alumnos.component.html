@@ -1,35 +1,37 @@
-<a routerLink="/manage">Crear</a>
-<br>
-<br>
-<div>
-    <mat-table [dataSource]="alumnos">
-        <ng-container matColumnDef="nombre">
-            <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
-            <mat-cell *matCellDef="let alumno"> {{alumno.nombre}} </mat-cell>
-        </ng-container>
-        <ng-container matColumnDef="primerApe">
-            <mat-header-cell *matHeaderCellDef> Primer Apellido </mat-header-cell>
-            <mat-cell *matCellDef="let alumno"> {{alumno.primerApellido}} </mat-cell>
-        </ng-container>
-        <ng-container matColumnDef="segundoApe">
-            <mat-header-cell *matHeaderCellDef> Segundo Apellido </mat-header-cell>
-            <mat-cell *matCellDef="let alumno"> {{alumno.segundoApellido}} </mat-cell>
-        </ng-container>
-        <ng-container matColumnDef="legajo">
-            <mat-header-cell *matHeaderCellDef> Legajo </mat-header-cell>
-            <mat-cell *matCellDef="let alumno"> {{alumno.legajo}} </mat-cell>
-        </ng-container>
-        <ng-container matColumnDef="acciones">
-            <mat-header-cell *matHeaderCellDef> Legajo </mat-header-cell>
-            <mat-cell *matCellDef="let alumno">
+<div class="container">
+    <a routerLink="/manage">Crear</a>
+    <br>
+    <br>
+    <div>
+        <mat-table [dataSource]="alumnos">
+            <ng-container matColumnDef="nombre">
+                <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
+                <mat-cell *matCellDef="let alumno"> {{alumno.nombre}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="primerApe">
+                <mat-header-cell *matHeaderCellDef> Primer Apellido </mat-header-cell>
+                <mat-cell *matCellDef="let alumno"> {{alumno.primerApellido}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="segundoApe">
+                <mat-header-cell *matHeaderCellDef> Segundo Apellido </mat-header-cell>
+                <mat-cell *matCellDef="let alumno"> {{alumno.segundoApellido}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="legajo">
+                <mat-header-cell *matHeaderCellDef> Legajo </mat-header-cell>
+                <mat-cell *matCellDef="let alumno"> {{alumno.legajo}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="acciones">
+                <mat-header-cell *matHeaderCellDef> Legajo </mat-header-cell>
+                <mat-cell *matCellDef="let alumno">
                     <a routerLink="/manage/{{alumno.alumnoId}}">Editar</a>
-            </mat-cell>
-        </ng-container>
-        <ng-container matColumnDef="fecha">
+                </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="fecha">
                 <mat-header-cell *matHeaderCellDef> Fecha de nacimiento </mat-header-cell>
                 <mat-cell *matCellDef="let alumno"> {{alumno.fechaNacimiento | date :'dd-MM-yyyy'}} </mat-cell>
-        </ng-container>
-        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-    </mat-table>
+            </ng-container>
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+    </div>
 </div>
