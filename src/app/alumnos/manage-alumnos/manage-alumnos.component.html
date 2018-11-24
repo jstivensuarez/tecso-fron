@@ -1,0 +1,65 @@
+<mat-card>
+    <!-- Title of an Card -->
+    <mat-card-title>
+        {{example}}
+    </mat-card-title>
+
+    <mat-card-content>
+        <form>
+            <table>
+                <tr>
+                    <td>
+                        <mat-form-field class="demo-full-width">
+                            <input matInput placeholder="Nombre" [(ngModel)]="alumno.nombre" [ngModelOptions]="{standalone: true}">
+                        </mat-form-field>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <mat-form-field class="demo-full-width">
+                            <input matInput placeholder="Primer apellido" [(ngModel)]="alumno.primerApellido"
+                                [ngModelOptions]="{standalone: true}">
+                        </mat-form-field>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <mat-form-field class="demo-full-width">
+                            <input matInput placeholder="Segundo apellido" [(ngModel)]="alumno.segundoApellido"
+                                [ngModelOptions]="{standalone: true}">
+                        </mat-form-field>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <mat-form-field class="demo-full-width">
+                            <input matInput [matDatepicker]="picker" placeholder="Fecha de nacimiento" [ngModel]="alumno.fechaNacimiento"
+                                [ngModelOptions]="{standalone: true}" (ngModelChange)="alumno.fechaNacimiento = $event">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker touchUi="true" #picker></mat-datepicker>
+                        </mat-form-field>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="content-center">
+                        <mat-card-actions>
+                            <button mat-raised-button color="accent" (click)="alert()">Regresar</button>
+                            <button mat-raised-button color="accent" (click)="save()" *ngIf="!isEditing">Crear</button>
+                            <button mat-raised-button color="accent" (click)="edit()" *ngIf="isEditing">Editar</button>
+                        </mat-card-actions>
+                    </td>
+                </tr>
+            </table>
+            <div>
+                <mat-checkbox [(ngModel)]="myModel" [ngModelOptions]="{standalone: true}">
+                    Check me!
+                </mat-checkbox>
+            </div>
+        </form>
+    </mat-card-content>
+</mat-card>
