@@ -26,7 +26,12 @@ export class AlumnoService {
   }
 
   getAlumno(id): Observable<any> {
-    return this.http.get(environment.endpointAlumnos + '/' + id).pipe(
+    return this.http.get(environment.endpointAlumnos + '/Get/' + id).pipe(
+      map(this.extractData));
+  }
+
+  getAlumnoByCourseId(courseId): Observable<any> {
+    return this.http.get(environment.endpointAlumnos + '/GetByCourseId/' + courseId).pipe(
       map(this.extractData));
   }
 

@@ -7,9 +7,11 @@ import { AppRoutingModule } from '../app-routing.module';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { GenericMesaggesComponent } from '../generic-mesagges/generic-mesagges.component';
+import { AlumnoReporteComponent } from './alumno-reporte/alumno-reporte.component';
+import { CursoReporteComponent } from './curso-reporte/curso-reporte.component';
 
 @NgModule({
-  declarations: [ManageAlumnosComponent, ListAlumnosComponent],
+  declarations: [ManageAlumnosComponent, ListAlumnosComponent, AlumnoReporteComponent, CursoReporteComponent],
   imports: [
     CommonModule,AppMaterialModuleModule, AppRoutingModule, FormsModule, HttpClientModule,ReactiveFormsModule
   ], 

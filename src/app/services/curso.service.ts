@@ -18,8 +18,17 @@ export class CursoService {
 
   constructor(private http: HttpClient) { }
 
-  getCursosByAlumnoId(alumnoId): Observable<any> {
-    return this.http.get(environment.endpointCursos+'/'+alumnoId).pipe(
+  getAllCourses(): Observable<any> {
+    return this.http.get(environment.endpointCursos+'/GetAll').pipe(
+      map(this.extractData));
+  }
+  getEnabledCursosByAlumnoId(alumnoId): Observable<any> {
+    return this.http.get(environment.endpointCursos+'/GetEnabled/'+alumnoId).pipe(
+      map(this.extractData));
+  }
+  
+  getCopletedByAlumnoId(alumnoId): Observable<any> {
+    return this.http.get(environment.endpointCursos+'/GetCopletedWithNotStarted/'+alumnoId).pipe(
       map(this.extractData));
   }
   

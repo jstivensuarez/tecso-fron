@@ -8,13 +8,13 @@ import { AlumnoService } from 'src/app/services/alumno.service';
 })
 export class ListAlumnosComponent implements OnInit {
   
-  alumnos: Alumno[]= [];
+  students: Alumno[]= [];
   displayedColumns: string[] = ['nombre', 'primerApe', 'segundoApe', 'legajo','fecha', 'acciones'];
   constructor(private serviceAlumno: AlumnoService) { 
     serviceAlumno.getAlumnos().subscribe(
       data =>{
         debugger;
-        this.alumnos = data;
+        this.students = data;
       }
     );
   }

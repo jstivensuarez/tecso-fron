@@ -40,11 +40,9 @@ export class ManageAlumnosComponent implements OnInit {
   save() {
     this.serviceAlumno.addAlumno(this.student).subscribe(
       data => {
-        debugger;
         this.showMesagge("El alumno se guardó con exito");
       },
       error => {
-        debugger;
         this.showMesagge("No se puedo realizar la transacción con exito, por favor pruebe más tarde!");
       }
     );
@@ -85,8 +83,9 @@ export class ManageAlumnosComponent implements OnInit {
   }
 
   getCursos(alumnoId: number) {
-    this.serviceCurso.getCursosByAlumnoId(alumnoId).subscribe(
+    this.serviceCurso.getEnabledCursosByAlumnoId(alumnoId).subscribe(
       data => {
+        debugger;
         this.student.cursos = data;
         this.form = new FormGroup({
           cursos: this.buildCursos(),
@@ -128,7 +127,6 @@ export class ManageAlumnosComponent implements OnInit {
       this.edit();
     }
   }
-
 
   showMesagge(mesagge) {
     this.fileNameDialogRef = this.dialog.open(GenericMesaggesComponent, {

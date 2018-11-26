@@ -1,9 +1,10 @@
 <div class="container">
-    <a routerLink="/manage">Crear</a>
+    <a routerLink="/manage">Crear</a> |
+    <a routerLink="/report-curso">Reporte por curso</a>
     <br>
     <br>
     <div>
-        <mat-table [dataSource]="alumnos">
+        <mat-table [dataSource]="students">
             <ng-container matColumnDef="nombre">
                 <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
                 <mat-cell *matCellDef="let alumno"> {{alumno.nombre}} </mat-cell>
@@ -21,9 +22,10 @@
                 <mat-cell *matCellDef="let alumno"> {{alumno.legajo}} </mat-cell>
             </ng-container>
             <ng-container matColumnDef="acciones">
-                <mat-header-cell *matHeaderCellDef> Legajo </mat-header-cell>
+                <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
                 <mat-cell *matCellDef="let alumno">
-                    <a routerLink="/manage/{{alumno.alumnoId}}">Editar</a>
+                    <a routerLink="/manage/{{alumno.alumnoId}}">Editar</a> |
+                    <a routerLink="/report/{{alumno.alumnoId}}">Detalle</a>
                 </mat-cell>
             </ng-container>
             <ng-container matColumnDef="fecha">

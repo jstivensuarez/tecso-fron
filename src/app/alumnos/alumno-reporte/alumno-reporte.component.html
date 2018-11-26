@@ -1,0 +1,45 @@
+<br>
+<br>
+<div class="container">
+    <mat-card>
+        <h2>
+            Reporte del estudiante: {{student.nombreCompleto}}
+        </h2>
+        <div>
+            <mat-table [dataSource]="courses">
+                <ng-container matColumnDef="asignatura">
+                    <mat-header-cell *matHeaderCellDef> Asignatura </mat-header-cell>
+                    <mat-cell *matCellDef="let curso"> {{curso.asignatura}} </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="cupoMaximo">
+                    <mat-header-cell *matHeaderCellDef> Cupo máximo </mat-header-cell>
+                    <mat-cell *matCellDef="let curso"> {{curso.cupoMaximo}} </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="docente">
+                    <mat-header-cell *matHeaderCellDef> Docente </mat-header-cell>
+                    <mat-cell *matCellDef="let curso"> {{curso.docente.nombreCompleto}} </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="estado">
+                    <mat-header-cell *matHeaderCellDef> Estado </mat-header-cell>
+                    <mat-cell *matCellDef="let curso">
+                        <span *ngIf="curso.estado == 0">
+                            Sin cursar
+                        </span>
+                        <span *ngIf="curso.estado == 3">
+                            No Regularizada
+                        </span>
+                        <span *ngIf="curso.estado == 4">
+                            Aprobada
+                        </span>
+                    </mat-cell>
+                </ng-container>
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            </mat-table>
+        </div>
+        <mat-card-actions >
+            <button mat-raised-button color="primary" (click)="return()"> Regresar</button>
+        </mat-card-actions>
+    </mat-card>
+
+</div>

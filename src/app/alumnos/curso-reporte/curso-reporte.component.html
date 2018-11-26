@@ -1,0 +1,51 @@
+<br>
+<br>
+<div class="container">
+  <mat-card>
+    <mat-card-content>
+      <form class="example-form">
+        <mat-form-field class="example-full-width">
+          <input type="text" placeholder="Seleccione el curso" aria-label="Number" matInput [formControl]="myControl"
+            [matAutocomplete]="auto">
+          <mat-autocomplete #auto="matAutocomplete" (optionSelected)='getStudents($event.option.value)' [displayWith]="displayFn">
+            <mat-option *ngFor="let course of filteredcourses | async" [value]="course">
+              {{course.asignatura}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+        <div class="row" *ngIf="currentProfessor">
+          <h3 class="margin-left">
+            Profesor: {{currentProfessor.nombreCompleto}}
+          </h3>
+        </div>
+
+        <div>
+          <mat-table [dataSource]="students">
+            <ng-container matColumnDef="nombre">
+              <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
+              <mat-cell *matCellDef="let alumno"> {{alumno.nombre}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="primerApe">
+              <mat-header-cell *matHeaderCellDef> Primer Apellido </mat-header-cell>
+              <mat-cell *matCellDef="let alumno"> {{alumno.primerApellido}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="segundoApe">
+              <mat-header-cell *matHeaderCellDef> Segundo Apellido </mat-header-cell>
+              <mat-cell *matCellDef="let alumno"> {{alumno.segundoApellido}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="legajo">
+              <mat-header-cell *matHeaderCellDef> Legajo </mat-header-cell>
+              <mat-cell *matCellDef="let alumno"> {{alumno.legajo}} </mat-cell>
+            </ng-container>
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+          </mat-table>
+        </div>
+      </form>
+      <mat-card-actions>
+          <button mat-raised-button color="primary" (click)="return()">Regresar</button>
+      </mat-card-actions>
+    </mat-card-content>
+
+  </mat-card>
+</div>

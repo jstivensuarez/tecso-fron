@@ -9,6 +9,7 @@ export class Alumno {
     legajo: string;
     fechaNacimiento: Date;
     cursos: Curso[];
+    nombreCompleto: string;
     constructor() { }
 }
   

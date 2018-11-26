@@ -19,7 +19,8 @@ import {
   ShowOnDirtyErrorStateMatcher, 
   MatTableModule,
   MatCheckboxModule, 
-  MatDialogModule      
+  MatDialogModule,      
+  MatAutocompleteModule
 } from '@angular/material'; 
 import { ScrollDispatchModule } from '@angular/cdk/scrolling';
 @NgModule({
@@ -43,7 +44,8 @@ import { ScrollDispatchModule } from '@angular/cdk/scrolling';
     MatTableModule, 
     MatCheckboxModule, 
     MatDialogModule,
-    ScrollDispatchModule
+    ScrollDispatchModule,
+    MatAutocompleteModule
   ], 
   exports: [
     CommonModule, 
@@ -64,7 +66,8 @@ import { ScrollDispatchModule } from '@angular/cdk/scrolling';
     MatTableModule,
     MatCheckboxModule, 
     MatDialogModule,
-    ScrollDispatchModule
+    ScrollDispatchModule,
+    MatAutocompleteModule
   ]
 })
 export class AppMaterialModuleModule { }
